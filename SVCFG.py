@@ -41,13 +41,18 @@ class CFG(object):
 
 
 cfg1 = CFG()
-cfg1.add_prod('S', 'NP VP')
-cfg1.add_prod('NP', 'Det N | Det N')
-cfg1.add_prod('NP', 'I | he | she | Joe')
-cfg1.add_prod('VP', 'V NP | VP')
-cfg1.add_prod('Det', 'a | the | my | his')
-cfg1.add_prod('N', 'elephant | cat | jeans | suit')
-cfg1.add_prod('V', 'kicked | followed | shot')
+cfg1.add_prod('WeatherP', 'VP CC Temp TimeP | VP CC Temp | Loc VP CC Temp TimeP | VP Loc TimeP')
+cfg1.add_prod('VP', 'det är CondAdj | det CondVB')
+cfg1.add_prod('Temp', '26 grader | 30 grader')
+cfg1.add_prod('CC', 'och')
+cfg1.add_prod('Loc' , 'LocI PlaceI | LocPÅ PlacePÅ')
+cfg1.add_prod('LocI' , 'i')
+cfg1.add_prod('LocPÅ', 'på')
+cfg1.add_prod('CondAdj', 'molnig')
+cfg1.add_prod('CondVB', 'snöar')
+cfg1.add_prod('TimeP', 'akkurat nå | imorgon')
+cfg1.add_prod('PlaceI', 'Bloomington | Stockholm')
+cfg1.add_prod('PlacePÅ', 'Gotland | Färöarna')
 
 for i in range(10):
-	print(cfg1.gen_random('S'))
+	print(cfg1.gen_random('WeatherP'))

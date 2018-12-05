@@ -1,5 +1,5 @@
 WeatherP -> "det är" Temp "och" Condition | 
-            "det är" Condition "and" Temp | 
+            "det är" Condition "och" Temp | 
             LocP "är det" Condition "och" Temp TimeP | 
             "det är" Condition LocP TimeP   | 
           ;
@@ -9,15 +9,17 @@ TimeP -> "akkurat nå" |
          "imorgon" 
         ;
 
-Condition -> "molnig" ;
+Condition -> "molnig" | "snöar" ;
 
 Place-I -> "Bloomington" | "Barcelona" | "Moscow" ;
 Place-PÅ ->  "Gotland" | ";
 
-cfg1.add_prod('S', 'NP VP')
-cfg1.add_prod('NP', 'Det N | Det N')
-cfg1.add_prod('NP', 'I | he | she | Joe')
-cfg1.add_prod('VP', 'V NP | VP')
-cfg1.add_prod('Det', 'a | the | my | his')
-cfg1.add_prod('N', 'elephant | cat | jeans | suit')
-cfg1.add_prod('V', 'kicked | followed | shot')
+cfg1.add_prod('WeatherP', 'VP Temp CC Cond TimeP | VP Cond CC Temp | LocP VP Cond CC Temp Timep | VP Cond LocP TimeP')
+cfg1.add_prod('VP', 'det är')
+cfg1.add_prod('Temp', '26 grader | 30 grader')
+cfg1.add_prod('CC', 'och')
+cfg1.add_prod('LocP' , 'i | på')
+cfg1.add_prod('Cond', 'molnig | snöar')
+cfg1.add_prod('TimeP', 'akkurat nå | imorgon')
+cfg1.add_prod('PlaceI', 'Bloomington | Stockholm')
+cfg1.add_prod('PlacePÅ', 'Gotland | Färöarna')
